@@ -1,5 +1,4 @@
 
-import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.junit.After;
 import org.junit.Before;
@@ -8,7 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
 
 import static org.junit.Assert.assertTrue;
 
@@ -27,8 +26,8 @@ public class TestLogin {
     @Test
     public void testLoginStandardUser() throws InterruptedException {
         User user = new User("standard_user", "secret_sauce");
-        this.loginPage.enterCredentials(user);
-        this.loginPage.pressLogin();
+        loginPage.enterCredentials(user);
+        loginPage.pressLogin();
         Thread.sleep(1000);
         String expectedRedirectUrl = "https://www.saucedemo.com/inventory.html";
         String actualRedirectUrl = driver.getCurrentUrl();
@@ -38,8 +37,8 @@ public class TestLogin {
     @Test
     public void testLoginLockedUser() throws InterruptedException {
         User user = new User("locked_user", "secret_sauce");
-        this.loginPage.enterCredentials(user);
-        this.loginPage.pressLogin();
+        loginPage.enterCredentials(user);
+        loginPage.pressLogin();
         Thread.sleep(1000);
         WebElement errorElement = driver.findElement(By.className("error-message-container"));
         assertTrue(errorElement.isDisplayed());
